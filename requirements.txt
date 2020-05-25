@@ -1,0 +1,10 @@
+jieba
+gensim
+pyahocorasick
+lxml
+pyemd
+nltk
+py2neo
+pymongo
+tqdm
+Flask
