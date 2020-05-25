@@ -55,7 +55,7 @@ class Bot(object):
             mode = "cr"
         else:
             mode = 'qa'
-        search_response, sim_score = self.search_bot.answer(query)
+        search_response, sim_score = self.search_bot.answer(query, mode=mode)
 
         # Seq2Seq response
         seq2seq_response = self.seq2seq_bot.answer(query)
