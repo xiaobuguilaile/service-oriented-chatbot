@@ -8,3 +8,4 @@
 '''
 
 from .seq2seq_bot import Seq2SeqBot
+from .model import Seq2SeqModel

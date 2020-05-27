@@ -93,7 +93,7 @@ class SearchEngine(object):
 
         for i in range(1, self.topk):
             items = soup_baidu.find(id=1)  # 获取id=1的标签项(即第一个搜索结果)
-            print("i= {}, items= {}".format(i, items))
+            # print("i= {}, items= {}".format(i, items))
 
             if not items:
                 logger.debug("百度找不到答案")
@@ -192,7 +192,7 @@ class SearchEngine(object):
             # 如果上面的全部匹配失败，就加入到left_text中
             left_text += items.get_text()
 
-        print("baidu: ", left_text)
+        # print("baidu: ", left_text)
         return answer, left_text
 
     @staticmethod
@@ -239,7 +239,7 @@ class SearchEngine(object):
                                     return answer, left_text
         left_text += r.get_text()
 
-        print("bing: ", left_text)
+        # print("bing: ", left_text)
         return answer, left_text
 
     def _search_other(self, query, left_text):
