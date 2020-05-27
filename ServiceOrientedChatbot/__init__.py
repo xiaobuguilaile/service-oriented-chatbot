@@ -8,7 +8,7 @@
 '''
 
 from .search_dialog import SearchBot
-from .seq2seq_dialog import Seq2seqModel
+from .seq2seq_dialog import Seq2SeqBot
 
 
 __version__ = "0.0.1"

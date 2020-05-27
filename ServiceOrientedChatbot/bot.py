@@ -68,3 +68,4 @@ class Bot(object):
             response = seq2seq_response
 
         return response
+

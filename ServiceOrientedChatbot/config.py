@@ -45,14 +45,17 @@ predict_result_path = os.path.join(pwd_path, 'output/predict_result.txt')
 
 class Params:
     """
-    Seq2seq model parameters
+    Seq2seq: autodecoder + attention model
     """
-    rnn_size = 256
-    num_layers = 1
-    embedding_size = 300
-    vocab_size = 10000
+
+    layer_size = 256  # typical options : 128, 256, 512, 1024
+    # embedding_size = 300
+    embedding_size = 128
+    # vocab_size = 10000
+    encoder_vocab_size = 20000
+    decoder_vocab_size = 20000
     learning_rate = 0.001
-    batch_size = 80
+    batch_size = 128
     epochs = 15
     save_steps = 300
     model_name = "chatbot.ckpt"
@@ -61,6 +64,12 @@ class Params:
     use_attention = True
     bidirectional_rnn = False
 
+    # train data
+    train_data = os.path.join(pwd_path +'data/train.data')
+    resource_data = os.path.join(pwd_path +'data/xiaohuangji50w_nofenci.conv')  # original data
+    model_data = os.path.join(pwd_path +'data/model_data')
+
+    max_train_data_size = 50000  # normally no limit
 
 class Web:
     """
