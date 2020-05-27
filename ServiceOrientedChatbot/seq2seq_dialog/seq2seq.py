@@ -98,6 +98,9 @@ class Decoder(tf.keras.Model):
         return y_preds, decoder_hidden, attention_weights
 
 
+
+# class Seq2SeqModel(object):
+
 PARAMS = config.Params
 
 # seq2seq model PARAMS
@@ -169,6 +172,4 @@ def batch_train_step(x_input, y_target, target_lang, encoder_hidden):
     optimizer.apply_gradients(zip(gradients, variables))
 
     return batch_avg_loss
-
-
 
