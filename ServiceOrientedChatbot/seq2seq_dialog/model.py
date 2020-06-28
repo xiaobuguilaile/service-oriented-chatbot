@@ -6,6 +6,7 @@
 @Date       : 2020/5/27
 @Desc       :
 '''
+
 import io
 import os
 import sys
@@ -17,7 +18,7 @@ from ServiceOrientedChatbot import config
 
 class Encoder(tf.keras.Model):
     """
-
+    Encoder层实现
     """
     def __init__(self, vocab_size, embedding_size, encoder_units, batch_size):
         super(Encoder, self).__init__()
@@ -71,7 +72,7 @@ class BahdanauAttention(tf.keras.Model):
 
 class Decoder(tf.keras.Model):
     """
-
+    Decoder层实现
     """
     def __init__(self, vocav_size, embedding_size, decoder_units, batch_size):
         super(Decoder, self).__init__()
@@ -125,7 +126,9 @@ checkpoint = tf.train.Checkpoint(
 
 
 class Seq2SeqModel(object):
-
+    """
+    训练Seq2Seq模型，用于生成query的回答
+    """
     def __init__(self):
         # 读取数据
         self.x_input_tensor, self.input_tokenizer, self.y_target_tensor, self.target_tokenizer = self.read_data(PARAMS.train_data,
@@ -208,7 +211,6 @@ class Seq2SeqModel(object):
         checkpoint_prefix = os.path.join(checkpoint_dir, 'ckpt')
 
         current_steps = 0
-
         while True:
             start_time_epoch = time.time()
             total_loss = 0

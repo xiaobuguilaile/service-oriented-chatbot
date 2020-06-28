@@ -23,12 +23,8 @@ def postag(text):
 
 def segment_file(in_file, out_file, word_sep=' ', pos_sep='/', is_pos=True):
     """
-    segment input file to output file
-    :param in_file:
-    :param out_file:
-    :param word_sep:
-    :param pos_sep:
-    :param is_pos: 需要词性标注
+    将input文件中的句子分词后存入output文件，segment input file to output file
+    :is_pos: True表示需要词性标注
     :return:
     """
     jieba.enable_parallel()
@@ -51,9 +47,11 @@ def segment_file(in_file, out_file, word_sep=' ', pos_sep='/', is_pos=True):
 
 
 def _load_words(file_path):
+    """ 导入 file_path 中的 words"""
 
     with codecs.open(file_path, "r", "utf-8") as rfd:
         words_set = set(rfd.read().splitlines())
+
     return words_set
 
 
@@ -65,8 +63,7 @@ class Tokenizer:
     user_define_words = _load_words(config.user_define_words_path)
     remove_words_set = _load_words(config.remove_words_path)
 
-    # Init jieba
-    jieba.initialize()
+    jieba.initialize()     # Init jieba
     for w in user_define_words:
         jieba.add_word(w, freq=1000000)
 

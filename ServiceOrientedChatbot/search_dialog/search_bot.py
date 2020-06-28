@@ -33,7 +33,7 @@ class SearchBot(object):
 
         # local text similarity
         if not os.path.exists(vocab_path):
-            logger.error('file not found, file:%s, please run "python3 data/../process.py"' % vocab_path)
+            logger.error('file not found, file:%s, please run "python3 data/../data_helper.py"' % vocab_path)
             raise ValueError('err. file not found, file:%s' % vocab_path)
         self.word2index, _ = load_dataset(vocab_path, vocab_size=50000)
 

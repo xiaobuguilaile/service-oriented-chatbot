@@ -100,7 +100,6 @@ class Decoder(tf.keras.Model):
 
 
 # class Seq2SeqModel(object):
-
 PARAMS = config.Params
 
 # seq2seq model PARAMS

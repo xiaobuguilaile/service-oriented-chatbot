@@ -47,15 +47,17 @@ class Bot(object):
         if use_task:
             task_response = ""
 
-        # Search response
         if len(self.context) >= 3 and chinese_count(query) <= 4:
             # user_msgs = self.context[::2][-3:]
             # msg = "<s>".join(user_msgs)
             # mode = 'qa'
-            mode = "cr"
+            mode = "cr"  # 单论
         else:
-            mode = 'qa'
-        search_response, sim_score = self.search_bot.answer(query, mode=mode)
+            mode = 'qa'  # 多轮
+
+        # Search response(暂时关闭)
+        # search_response, sim_score = self.search_bot.answer(query, mode=mode)
+        search_response, sim_score = "", 0
 
         # Seq2Seq response
         seq2seq_response = self.seq2seq_bot.answer(query)

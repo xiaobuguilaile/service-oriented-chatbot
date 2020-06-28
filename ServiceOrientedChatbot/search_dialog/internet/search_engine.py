@@ -160,6 +160,7 @@ class SearchEngine(object):
                         logger.debug("百度知道找到答案")
                         answer.append(r.get_text().strip().replace("展开全部", "").strip())
                         return answer, left_text
+
             # 百度知道的另一种形式
             if items.find("h3"):
                 if items.find("h3").find("a").get_text().__contains__("百度知道") and (i == 1 or i == 2):

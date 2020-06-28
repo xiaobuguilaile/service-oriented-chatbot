@@ -19,6 +19,7 @@ class BM25Sort(object):
             corpus: list of list of str
         """
         self.bm = bm25.BM25(corpus)  # 初始化完成了idf的计算
+        self.average_idf = sum(map(lambda k: float(self.bm.idf[k]), self.bm.idf.keys())) / len(self.bm.idf.keys())
 
     def similarity(self, query, size=10):
         """
@@ -27,7 +28,7 @@ class BM25Sort(object):
             corpus: list of list of str
             size: 取前几位的结果
         """
-        scores = self.bm.get_scores(query)
+        scores = self.bm.get_scores(query, self.average_idf)
         scores_sort = sorted(list(enumerate(scores)), key=lambda item:item[1], reverse=True)  # 从大到小
 
         return scores_sort[:size]

@@ -13,6 +13,7 @@ from ServiceOrientedChatbot.utils import logger
 
 if __name__ == '__main__':
 
+    # 开始搜索模式
     engine = SearchEngine()
 
     logger.debug(engine.search("北京今天天气如何？"))

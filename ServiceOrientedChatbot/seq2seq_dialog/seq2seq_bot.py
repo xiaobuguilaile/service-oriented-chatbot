@@ -11,7 +11,7 @@ from collections import deque
 
 from ServiceOrientedChatbot import config
 from ServiceOrientedChatbot.utils import logger
-from ServiceOrientedChatbot.seq2seq_dialog import Seq2SeqModel
+from ServiceOrientedChatbot.seq2seq_dialog.model import Seq2SeqModel
 
 
 class Seq2SeqBot(object):

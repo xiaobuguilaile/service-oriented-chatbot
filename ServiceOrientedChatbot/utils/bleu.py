@@ -11,12 +11,13 @@ from nltk.translate.bleu_score import sentence_bleu
 
 
 def bleu(answer_file, standard_answer_file):
+    """计算文件中所有句子的 bleu score """
 
     rf_answer = open(answer_file, 'r', "utf-8")
     rf_standard_answer = open(standard_answer_file, 'r', "utf-8")
     answer_lines = rf_answer.readlines()
     standard_answer_lines = rf_standard_answer.readlines()
-    # compute score
+    # compute bleu score
     scores = []
     for i in range(len(answer_lines)):
         candidate = list(answer_lines[i].strip())
@@ -28,6 +29,7 @@ def bleu(answer_file, standard_answer_file):
             standard_score = standard_answer_line[1]
             bleu_score = sentence_bleu(references, candidate, weights=(0.35, 0.45, 0.1, 0.1),
                                        smoothing_function=SmoothingFunction().method1)
+            # weighted score
             each_score = bleu_score * float(standard_score) + each_score
         scores.append(each_score / 10)
     rf_answer.close()
@@ -39,19 +41,22 @@ def bleu(answer_file, standard_answer_file):
 
 
 def bleu_score(candidate, reference):
+    """计算candidate和reference之间的 bleu score"""
 
     score = sentence_bleu(
         [list(reference)], list(candidate),
         weights=(0.25, 0.25, 0.25, 0.25),
         smoothing_function=SmoothingFunction().method1)
+
     return score
 
 
 def bleu_similarity(query, docs):
-
+    """ 计算query和 docs之间的相似度 """
     scores = [(idx, bleu_score(doc, query))
               for idx, doc in enumerate(docs)]
     scores.sort(key=lambda x: x[1], reverse=True)
+
     return scores
 
 
